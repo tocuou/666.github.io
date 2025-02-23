@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>connection in progresse</title>
+    <title>Page de mot de passe</title>
     <style>
         body {
             display: flex;
@@ -14,35 +14,58 @@
             margin: 0;
             font-family: Arial, sans-serif;
         }
-        .waiting-container {
+        .password-container {
             text-align: center;
-            color: #FF0000;
-            font-size: 24px;
-        }
-        .dots {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
             background-color: #FF0000;
-            border-radius: 50%;
-            margin-left: 5px;
-            animation: blink 1s infinite alternate;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .dots:nth-child(2) {
-            animation-delay: 0.2s;
+        input[type="password"] {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 200px;
         }
-        .dots:nth-child(3) {
-            animation-delay: 0.4s;
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #000000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
-        @keyframes blink {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+        button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <div class="waiting-container">
-        Connection in progress<span class="dots"></span><span class="dots"></span><span class="dots"></span>
+    <div class="password-container">
+        <h2>ENTER THE PASSWORD</h2>
+        <input type="password" id="password" placeholder="PASSWORD">
+        <button onclick="checkPassword()">ENTER</button>
+        <p id="message"></p>
     </div>
+
+    <script>
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            const message = document.getElementById('message');
+            if (password === '666') {
+                message.textContent = 'Accès accordé';
+                message.style.color = 'green';
+                setTimeout(() => {
+                    window.location.href = 'https://tocuou.github.io/666.github.io/Connection%20in%20progress.html';
+                }, 1000); // 1000 millisecondes = 1 secondes
+            } else {
+                message.textContent = 'Mot de passe incorrect';
+                message.style.color = 'black';
+            }
+        }
+    </script>
 </body>
 </html>
