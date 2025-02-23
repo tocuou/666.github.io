@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal</title>
+    <style>
+        body {
+            background-color: black;
+            color: lime;
+            font-family: monospace;
+            padding: 20px;
+        }
+        .terminal-input-wrapper {
+            display: flex;
+            align-items: center;
+        }
+        .terminal-input {
+            width: 100%;
+            border: none;
+            background: none;
+            color: lime;
+            outline: none;
+        }
+        .output {
+            margin-top: 10px;
+        }
+        .prompt {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="terminal">
+        <div class="output" id="output"></div>
+        <div class="terminal-input-wrapper">
+            <span class="prompt" id="username">User:~$ </span>
+            <input type="text" class="terminal-input" id="terminal-input" autofocus>
+        </div>
+    </div>
+
+    <script>
+        let username = "User:~$ ";
+
+        document.getElementById('terminal-input').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                let input = document.getElementById('terminal-input').value;
+                let output = document.getElementById('output');
+                let newLine = document.createElement('div');
+                newLine.textContent = username + input;
+                
+                // Add response for each input
+                let responseLine = document.createElement('div');
+                responseLine.textContent = 'Response: ' + getResponse(input);
+                
+                output.appendChild(newLine);
+                output.appendChild(responseLine);
+
+                document.getElementById('terminal-input').value = '';
+            }
+        });
+
+        function getResponse(input) {
+            // You can add more complex responses here based on input
+            switch(input.toLowerCase()) {
+                case 'hello':
+                    return 'Hi there!';
+                case 'who are you?':
+                    return 'I am your virtual assistant.';
+                default:
+                    return 'Command not recognized.';
+            }
+        }
+    </script>
+</body>
+</html>
